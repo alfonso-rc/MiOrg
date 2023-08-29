@@ -1,0 +1,21 @@
+.equipo{
+  width: 100%;
+  /* background-color: #d9f7e9; */
+  padding: 32px;
+  box-sizing: border-box;/* para quitar el sobrante */
+  text-align: center;
+  font-size: 32px;
+}
+.equipo h3{
+  font-weight: 400;
+  color: #212121;
+  border-bottom: 4px solid #57c278;
+  display: inline-block;/*para que no se muestre toda la linea a lo ancho*/
+  padding-bottom: 8px;
+}
+.colaboradores{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
