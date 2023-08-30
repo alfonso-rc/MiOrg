@@ -10,6 +10,8 @@ const Formulario =(props)=>{
   const [foto, actulizarFoto]     = useState()
   const [equipo, actualizarEquipo]= useState()
 
+  const {registrarColaborador}=props
+
   const manejarEnvio =(e)=>{
     e.preventDefault()
     const enviarDatos = 
@@ -19,7 +21,8 @@ const Formulario =(props)=>{
         foto,
         equipo
       }
-      console.log("Manejar el envio",enviarDatos)
+      //funcion de app y la traemos a formulario para enviar los datos a app
+      registrarColaborador(enviarDatos)
 
   }
   return <section className="formulario">
