@@ -8,7 +8,38 @@ import Footer from './componentes/Footer';
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false)
-  const [colaboradores,actualizarColaboradores]=useState([])
+  const [colaboradores,actualizarColaboradores]=useState([
+    {
+      equipo: "Front End",
+      foto:   "http://github.com/harlandlohora.png",//
+      nombre: "Harland Lohora",
+      puesto: "instructor"
+    },
+     {
+      equipo: "Programación",
+      foto:   "http://github.com/alfonso-rc.png",//
+      nombre: "Genesys Rondon",
+      puesto: "Dearrolladora de software e instructora"
+    },
+     {
+      equipo: "UX y Diseño",
+      foto:   "http://github.com/jeanmarieAluraLatam.png",//
+      nombre: "Jeanmarie Quijada",
+      puesto: "Instructora Alura"
+    },
+     {
+      equipo: "Programación",
+      foto:   "http://github.com/christianpva.png",//
+      nombre: "Christian Velasco",
+      puesto: "Head e  instructor Alura"
+    },
+     {
+      equipo: "Innovación y Gestion",
+      foto:   "http://github.com/JoseDarioGonzalezCha.png",//
+      nombre: "Jose Gonzalez",
+      puesto: "Dev FullStack"
+    }
+  ])
 
   const cambiarMostrar = ()=>{
     actualizarMostrar(!mostrarFormulario)
@@ -18,6 +49,10 @@ function App() {
 const registrarColaborador =(colaborador)=>{
   console.log("Nuevo colaborador", colaborador)
   actualizarColaboradores([...colaboradores, colaborador])
+}
+  // Eliminar colaborador.
+const elimarColaborador=()=>{
+  console.log("elimnar colaborador")
 }
 
   // Lista de equipos. 
@@ -75,7 +110,9 @@ const registrarColaborador =(colaborador)=>{
        equipos.map((equipo)=> <Equipo 
        datos={equipo} 
        key={equipo.titulo} 
-       colaboradores={colaboradores}
+       colaboradores={colaboradores.filter(
+        colaborador => colaborador.equipo === equipo.titulo)}
+        eliminarColaborador={elimarColaborador}
        />)
       }
       <Footer/>
