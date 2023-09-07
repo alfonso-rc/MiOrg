@@ -1,17 +1,27 @@
 import "./Equipo.css"
 import Colaborador from "../Colaborador"
+import hexToRgba from "hex-to-rgba"
 
 const Equipo =(props)=>{
-const {colorPrimario,colorSecundario,titulo}= props.datos
-const {colaboradores, eliminarColaborador}=props//aqui recibimos
+const {colorPrimario,titulo,id}= props.datos
+const {colaboradores, eliminarColaborador,actualizarColor, like } = props//aqui recibimos
 
-const colSecun={backgroundColor:colorSecundario}
+const colSecun={backgroundColor: hexToRgba(colorPrimario, 0.5)}
 const colPrim={borderColor:colorPrimario}
 
 return <>
    { colaboradores.length>0 &&
      <section className="equipo"style={colSecun}>
-          <h3 style={colPrim}>{titulo}</h3>
+          <input 
+               type="color"
+               className="input-color"
+               value={colorPrimario}
+               onChange={(e)=>{
+                    actualizarColor(e.target.value,id)
+               }}          
+          
+          />
+                    <h3 style={colPrim}>{titulo}</h3>
            <div className="colaboradores">
                 {
                     colaboradores.map((colaborador,index)=> <Colaborador
@@ -19,6 +29,7 @@ return <>
                     key={index}
                     colorPrimario={colorPrimario}
                     eliminarColaborador={eliminarColaborador}//aqui lo enviamos
+                    like = {like}
                     />)
                 }
            </div>
